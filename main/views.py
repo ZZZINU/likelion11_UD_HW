@@ -43,3 +43,9 @@ def update(request, id):
     update_blog.body = request.POST['body']
     update_blog.save()
     return redirect('main:detail', update_blog.id)
+
+# delete(삭제) 기능 구현
+def delete(request, id):
+    delete_blog = Blog.objects.get(id=id)
+    delete_blog.delete()
+    return redirect('main:mainpage')
